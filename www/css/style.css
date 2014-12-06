@@ -2451,19 +2451,19 @@ form textarea:focus {
 form .formerize-placeholder {
   color: #555 !important;
 }
-form ::-webkit-input-placeholder {
+form::-webkit-input-placeholder {
   color: #555 !important;
 }
-form :-moz-placeholder {
+form:-moz-placeholder {
   color: #555 !important;
 }
-form ::-moz-placeholder {
+form::-moz-placeholder {
   color: #555 !important;
 }
-form :-ms-input-placeholder {
+form:-ms-input-placeholder {
   color: #555 !important;
 }
-form ::-moz-focus-inner {
+form::-moz-focus-inner {
   border: 0;
 }
 /* Table */
@@ -2988,7 +2988,14 @@ header .icon.circled {
 /* custom sci-room */
 #logo-wrap {
   height: 65px;
-  margin-left: 63px;
+  /*margin-left: 63px;*/
+}
+#logo-wrap img {
+  margin-left: 42px;
+  margin-right: 42px;
+  margin-bottom: 19px;
+  width: 160px;
+  margin-top: 27px;
 }
 .homepage {
   overflow: hidden;
@@ -3402,7 +3409,10 @@ select {
   margin: 0px auto;
 }
 .wrapper-lobby header #logo-wrap img {
-  margin-left: 60px;
+  margin-left: 46px;
+  margin-bottom: 19px;
+  width: 160px;
+  margin-top: 27px;
 }
 .wrapper-lobby header #logo-wrap hr {
   top: -1em;
