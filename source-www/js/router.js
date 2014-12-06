@@ -4,7 +4,7 @@ module.exports = function (angular) {
       function ($routeProvider, $locationProvider) {
         $routeProvider
          .when('/', {
-            templateUrl: 'index.html',
+            templateUrl: 'lobby.html',
             controller: 'indexCtrl',
             controllerAs: 'indexCtrl'
           })

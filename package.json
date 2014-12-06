@@ -5,18 +5,18 @@
   "scripts": {},
   "author": "SERPteam",
   "dependencies": {
-    "express.io": "latest",
-    "angular-local-storage": "git+https://github.com/alekskorolev/angular-local-storage.git",
     "angular": "git+https://github.com/bclinkinbeard/angular.git",
-    "angular-router-browserify": "latest",
     "angular-cookies": "latest",
+    "angular-local-storage": "git+https://github.com/alekskorolev/angular-local-storage.git",
+    "angular-router-browserify": "latest",
+    "angular.io": "git+https://github.com/alekskorolev/angular.io.git",
+    "bcrypt": "^0.8.0",
+    "events": "latest",
+    "express.io": "latest",
     "jquery-browserify": "latest",
     "log4js": "latest",
-    "angular-local-storage": "git+https://github.com/alekskorolev/angular-local-storage.git",
     "mongoose": "latest",
-    "mongoose-redis-cache": "latest",
-    "events": "latest",
-    "angular.io": "git+https://github.com/alekskorolev/angular.io.git"
+    "mongoose-redis-cache": "latest"
   },
   "devDependencies": {
     "gulp-rename": "latest",
