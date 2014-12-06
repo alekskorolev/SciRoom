@@ -1,7 +1,7 @@
 /*jslint node: true*/
 module.exports = function (angular) {
 	angular.module('sciroom')
-		.factory('userModel', ['$rootScope', 'socketIO', function ($rootScope, io) {
+		.factory('userModel', ['$rootScope', 'socketIO', '$location', function ($rootScope, io, $location) {
 			var UserModel = function () {
 				var priv = {
 					user: {role: 'guest', profile: {name: 'Guest'}},
@@ -10,6 +10,7 @@ module.exports = function (angular) {
 					},
 					// User authorithation
 					login: function (authdata, cb) {
+						var cb = cb || false;
 						console.log(authdata)
 						var errors = priv.checkAuthData(authdata);
 						if (errors) {
@@ -45,11 +46,20 @@ module.exports = function (angular) {
 						return errors.length>0?errors:false;
 					},
 					checkAuth: function () {
+						var cb = cb || false;
 						io.send('auth:check', {}, function (data) {
 							// after auth
 							console.log(data);
-
-							if (cb) cb(!data.success);
+							if (data.auth) {
+								$.extend(true, priv.user, {role: "user", profile: { login: data.user.login}});
+								
+								$location.path('/lobby');
+								
+								console.log($location);
+							} else {
+								$location.path('/');
+							}
+							if (angular.isFunction(cb)) cb(!data.success);
 						});
 					}
 				};
@@ -58,7 +68,8 @@ module.exports = function (angular) {
 						return priv.user.role;
 					},
 					profile: priv.user.profile,
-					login: function (data, cb) {
+					login: function (data ) {
+						var cb = cb || priv.checkAuth;
 						/* TODO реализовать функционал авторизации */
 						priv.login(data, cb);
 					},

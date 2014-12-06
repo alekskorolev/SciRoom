@@ -1,9 +1,14 @@
 module.exports = function (angular) {
   angular.module('sciroom')
-    .config(["$routeProvider", "$locationProvider",
+    .config(["$routeProvider", "$locationProvider", 
       function ($routeProvider, $locationProvider) {
         $routeProvider
          .when('/', {
+            templateUrl: 'index.html',
+            controller: 'indexCtrl',
+            controllerAs: 'indexCtrl'
+          })
+         .when('/lobby', {
             templateUrl: 'lobby.html',
             controller: 'indexCtrl',
             controllerAs: 'indexCtrl'
