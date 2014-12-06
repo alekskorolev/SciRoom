@@ -1,10 +1,11 @@
 /*jslint node: true*/
+console.log('test');
 module.exports = function (angular) {
 	
 	angular.module('sciroom')
-    .directive('authBaseSnippet',['userModel', '$rootScope', function (userModel, $rootScope) {
+    .directive('profileBaseSnippet',['userModel', '$rootScope', function (userModel, $rootScope) {
         return {
-            templateUrl: 'modules/authBase/snippet.html',
+            templateUrl: 'modules/authBase/pfsnippet.html',
             replace: false,
             transclude: false,
             restrict: 'EA',
@@ -13,14 +14,9 @@ module.exports = function (angular) {
 							
 							$.extend($scope, {
 								user: userModel,
-								auth: {login: "fail@alesan.ru", password: "1qaz2wsx"},
-								pressEnter: function ($event) {
-									console.log($event.keyCode);
-									if ($event.keyCode==13) $scope.startLogin();
-								},
-								startLogin: function () {
-									
-									$scope.user.login($scope.auth, function (errors) {
+								auth: {login: "", password: ""},
+								logout: function () {
+									$scope.user.logout({}, function (errors) {
 										console.log(errors);
 									});
 								}

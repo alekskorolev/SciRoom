@@ -1,65 +1,64 @@
-	
-<div calss='lobby-wrap'> 
-<div id="header-lobby   ">
-						
-				<!-- Inner -->
-					<div class="wrapper-lobby">
-						<header>
-							<h1 id='logo-wrap'> <img src="images/logo.png"</h1>
-                                <hr />
-                                </header>
-                            </div>            
-                <div class="lobby">
-                    <div class="publ">
-                        <div class='team tooltip' title="4pm boys and girls only english please">
-                            <div class='jointeam'>Join!</div>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                            
-                        </div>
-                        <div class='team tooltip'>
-                            <div class='jointeam full'>Full</div>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                        </div>
-                        <div class='team'>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                        </div>
-                        <div class='team'>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                        </div>
-                        <div class='team'>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                        </div>
-                        <div class='team'>
-                        <span class='name'>My Team</span>
-                        <span class='disription'>4pm game lang: Enlish</span>    
-                        </div>
-                    </div>               
-                    <div class='own'>
-                        <input type='text' class="team name" placeholder="enter team name">
-												<label>ComingSoon adiitionlal params</label>
-                        <textarea rows="9" cols="50" placeholder=" Some discription">
-                           
-                        </textarea>    
-                        <a href='#' class="findteam">Create team for game.</a>
-                    </div>            
-                                
-                                
-                 </div>
-                                
-							
-							
-						
-						
-					</div>
-                </div>
+<div calss='lobby-wrap'>
+	<div id="header-lobby   ">
 
-    <script>
-/*        $(document).ready(function() {
+		<!-- Inner -->
+		<div class="wrapper-lobby">
+			<header>
+				<h1 id='logo-wrap'> <img src="images/logo.png"></h1>
+					<profile-base-snippet></profile-base-snippet>
+				<hr />
+			</header>
+		</div>
+		<div class="lobby">
+			<div class="publ">
+				<div class='team tooltip' title="4pm boys and girls only english please">
+					<div class='jointeam'>Join!</div>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+
+				</div>
+				<div class='team tooltip'>
+					<div class='jointeam full'>Full</div>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+				</div>
+				<div class='team'>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+				</div>
+				<div class='team'>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+				</div>
+				<div class='team'>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+				</div>
+				<div class='team'>
+					<span class='name'>My Team</span>
+					<span class='disription'>4pm game lang: Enlish</span> 
+				</div>
+			</div>
+			<div class='own'>
+				<input type='text' class="team name" placeholder="enter team name" ng-model="newteam.name">
+				<textarea rows="9" cols="50" placeholder=" Some discription" ng-model="newteam.description">
+
+				</textarea>
+				<a class="findteam" ng-click="createTeam()">Create team for game.</a>
+			</div>
+
+
+		</div>
+
+
+
+
+
+	</div>
+</div>
+
+<script>
+	/*        $(document).ready(function() {
             $('.tooltip').tooltipster({
             position:bottom;
             offsetY: -20;
@@ -69,6 +68,5 @@
             $(this).find.closest('.jointeam').css("right:0");
             })
         });*/
-    </script>
-    
-    
+</script>
+

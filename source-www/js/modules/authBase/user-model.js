@@ -28,6 +28,20 @@ module.exports = function (angular) {
 							if (cb) cb(!data.success);
 						});
 					},
+					// User authorithation
+					logout: function (data, cb) {
+						var cb = cb || false;
+						io.send('auth:logout', data, function (data) {
+							// after auth
+							console.log(data);
+							if (data.success) {
+								$.extend(true, priv.user, {role: "guest", profile: { name: "Guest"}});
+							} else {
+								// TODO error message
+							}
+							if (cb) cb(!data.success);
+						});
+					},
 					// Валидация данных авторизации
 					checkAuthData: function (authdata) {
 						var errors = [];
@@ -73,9 +87,9 @@ module.exports = function (angular) {
 						/* TODO реализовать функционал авторизации */
 						priv.login(data, cb);
 					},
-					logout: function () {
-						/* TODO реализовать функционал */
-					 	$.extend(true, priv.user, {role: "guest", profile: { name: "Guest"}});
+					logout: function (data) {
+						var cb = cb || priv.checkAuth;
+						priv.logout(data, cb);
 					},
 					checkauth: function () {
 						priv.checkAuth();

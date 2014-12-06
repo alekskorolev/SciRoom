@@ -27,7 +27,7 @@ module.exports = function (app) {
 						req.io.respond({success: false, error: 'undefined server error'});
 					} else if (_user) {
 						_user.comparePassword(req.data.password, function (err, isMatch) {
-							if (err && !isMatch) {
+							if (err || !isMatch) {
 								req.io.respond({success: false, error: 'server error or wrong password'});
 							} else {
 								req.session.user = _user;
@@ -50,7 +50,8 @@ module.exports = function (app) {
 			
 		},
 		logout: function (req) {
-			log.debug('logout user: ', req.data);
+			req.session.user = false;
+			req.session.save();
 			req.io.respond({success: true});
 		}
 	}

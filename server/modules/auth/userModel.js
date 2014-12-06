@@ -42,13 +42,14 @@ module.exports = function (app) {
 			model.Users.findOne({ login: this.login }).select("+password").exec(function (err, user) {    
 				console.log(user);
         if(user) { 		
+
 					bcrypt.compare(candidatePassword, user.password, function(err, isMatch) {
 						log.debug(err, isMatch)
 						if (err) {
-							log.warn('Password is incorrect');
+							log.warn('Password check fault');
 							cb(err);
 						} else {
-							log.debug('password correct');
+							log.debug('password check complite');
 							cb(null, isMatch);
 						}
 

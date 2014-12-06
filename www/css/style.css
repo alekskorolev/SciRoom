@@ -3429,6 +3429,19 @@ select {
   height: 21px;
   background: rgba(255, 255, 255, 0.2);
 }
+.wrapper-lobby header .profile {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 150px;
+  height: 50px;
+}
+.wrapper-lobby header .profile .logout {
+  color: #fe8;
+}
+.wrapper-lobby header .profile .logout:hover {
+  color: #f45;
+}
 .lobby {
   vertical-align: top;
   width: 1200px;
