@@ -5,20 +5,24 @@ module.exports = function (angular) {
 			var UserModel = function () {
 				var priv = {
 					user: {role: 'guest', profile: {name: 'Guest'}},
-					// Авторизация пользователя.
+					mask: {
+						email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+					},
+					// User authorithation
 					login: function (authdata, cb) {
+						console.log(authdata)
 						var errors = priv.checkAuthData(authdata);
 						if (errors) {
 							cb(errors);
 							return errors;
 						}
 						io.send('auth:login', authdata, function (data) {
-							// После авторизации
+							// after auth
 							console.log(data);
 							if (data.success) {
 								$.extend(true, priv.user, {role: "user", profile: { name: "Вася пупкин"}});
 							} else {
-								// TODO сообщение об ошибке
+								// TODO error message
 							}
 							if (cb) cb(!data.success);
 						});
@@ -26,53 +30,27 @@ module.exports = function (angular) {
 					// Валидация данных авторизации
 					checkAuthData: function (authdata) {
 						var errors = [];
-						// TODO: вынести ошибки в библиотеку ошибок, стандартизировать коды и сообщения, добавить возможность локализации сообщений.
+						// TODO: create standart error library
 						if (!authdata) return [{error: "UNDEFINED_DATA", msg: "Auth data cann`t be empty"}];
-						if (!authdata.mail) {
+						if (!authdata.login) {
 							errors.push({error: "UNDEFINED_LOGIN", msg: "Login cann`t be empty"});
 						} else {
-							
+							if (!priv.mask.email.test(authdata.login)) errors.push({error: "UNCORECT_LOGIN", msg: "Email has incorrect format"});
 						}
 						if (!authdata.password) {
 							errors.push({error: "UNDEFINED_PASSWORD", msg: "Password cann`t be empty"});
 						} else {
-							
+							if (authdata.password.length<5) errors.push({error: "SHORT_PASSWORD", msg: "Password is short"});
 						}
 						return errors.length>0?errors:false;
 					},
-					// Регистрация пользователя.
-					register: function (authdata, cb) {
-						console.log(authdata);
-						var errors = priv.checkRegData(authdata);
-						if (errors) {
-							cb(errors);
-							return errors;
-						}
-						io.send('auth:register', authdata, function (data) {
-							// После авторизации
+					checkAuth: function () {
+						io.send('auth:check', {}, function (data) {
+							// after auth
 							console.log(data);
-							if (data.success) {
-								$.extend(true, priv.user, {role: "user", profile: { name: "Вася пупкин"}});
-							} else {
-								// TODO сообщение об ошибке
-							}
+
 							if (cb) cb(!data.success);
 						});
-					},
-					// Валидация данных авторизации
-					checkRegData: function (authdata) {
-						
-						// TODO: вынести ошибки в библиотеку ошибок, стандартизировать коды и сообщения, добавить возможность локализации сообщений.
-						if (!authdata) return [{error: "UNDEFINED_DATA", msg: "Reg data cann`t be empty"}];
-						var errors = priv.checkAuthData({mail: authdata.mail, password: authdata.password[0]});
-						if (errors.length>0) {
-							return errors;
-						} else if (authdata.password[0] != authdata.password[1]) {
-							return [{error: "PASSWORDS_NOT_COMPARE", msg: "Password  and repassword whold be equivalent"}];
-						} else {
-							return false;
-						}
-						return false;
 					}
 				};
 				return {
@@ -88,13 +66,14 @@ module.exports = function (angular) {
 						/* TODO реализовать функционал */
 					 	$.extend(true, priv.user, {role: "guest", profile: { name: "Guest"}});
 					},
-					register: function (data, cb) {
-						/* TODO реализовать функционал */
-						priv.register(data, cb);
+					checkauth: function () {
+						priv.checkAuth();
 					}
 				};
 			};
-			return new UserModel();
+			var user = new UserModel();
+			user.checkauth();
+			return user;
 		}]);
 
 };
