@@ -1,6 +1,6 @@
 module.exports = function (angular) {
   angular.module('sciroom')
-	.directive('headerCtrl', ['config', function(config) {
+	.directive('headerCtrl', ['config',"userModel", '$rootScope', function(config,userModel, $rootScope) {
 		return {
 			restrict: 'A',
 			link: function($scope, element, attrs) {
@@ -13,6 +13,9 @@ module.exports = function (angular) {
 					console.log(msg);
 					$scope.head.title = config.constants.title + " / " + msg.title;
 				});
+				$rootScope.$on('$routeChangeStart', function (event, next) {
+            userModel.checkauth();
+        });
 			}
 		}
 	}]);

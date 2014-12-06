@@ -38,10 +38,10 @@ module.exports = function (app) {
 					} else {
 						Users.create({login: req.data.login, _pass: {isNew: true, value: req.data.password}}, function (err, user) {
 							if (err) {
-								req.session.user = user;
-								req.session.save();
 								req.io.respond({success: false, error: "error of user saved: "});
 							} else {
+								req.session.user = user;
+								req.session.save();
 								req.io.respond({success: true, msg: 'user is auth', user: user});
 							}
 						})

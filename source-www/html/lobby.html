@@ -1,5 +1,7 @@
 
 <script src="javascript/jquery.min.js"></script>
+
+<script src="javascript/jquery.tooltipster.js"></script>
 	
 <div calss='lobby-wrap'>
 <div id="header-lobby   ">
@@ -13,11 +15,14 @@
                             </div>            
                 <div class="lobby">
                     <div class="publ">
-                        <div class='team'>
+                        <div class='team tooltip' title="4pm boys and girls only english please">
+                            <div class='jointeam'>Join!</div>
                         <span class='name'>My Team</span>
                         <span class='disription'>4pm game lang: Enlish</span>    
+                            
                         </div>
-                        <div class='team'>
+                        <div class='team tooltip'>
+                            <div class='jointeam full'>Full</div>
                         <span class='name'>My Team</span>
                         <span class='disription'>4pm game lang: Enlish</span>    
                         </div>
@@ -40,9 +45,10 @@
                     </div>               
                     <div class='own'>
                         <input type='text' class="team name" placeholder="enter team name">
-                        <textarea rows="4" cols="30">
-                            Some discription
+                        <textarea rows="9" cols="50" placeholder=" Some discription">
+                           
                         </textarea>    
+                        <a href='#' class="findteam">Find </a>
                     </div>            
                                 
                                 
@@ -55,6 +61,17 @@
 					</div>
                 </div>
 
-    
+    <script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster({
+            position:bottom;
+            offsetY: -20;
+            animation: fade;
+            });
+           /* $('.publ .team').hover(function({
+            $(this).find.closest('.jointeam').css("right:0");
+            })*/
+        });
+    </script>
     
     

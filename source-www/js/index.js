@@ -7,6 +7,13 @@ require('angular-local-storage')(angular);
 require('angular.io')(angular);
 
 
+require('./lib/jquery.dropotron.min.js')($);
+require('./lib/jquery.scrolly.min.js')($);
+require('./lib/jquery.onvisible.min.js')($);
+var skel = require('./lib/skel.min.js');
+require('./lib/skel-layers.min.js')($, skel);
+require('./lib/init.js')($, skel);
+
 angular.module('sciroom', ['ngRoute', 'LocalStorageModule', 'SocketIOModule']);
 
 // Configure application
