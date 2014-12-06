@@ -3464,3 +3464,6 @@ select {
   height: 515px;
   vertical-align: top;
 }
+.own .team {
+  display: block;
+}
