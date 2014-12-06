@@ -33,7 +33,7 @@ var app = {
 	},
 	mode: 'development',
 	modules: [
-		//{id: 'module-id', enable: true, path: './path to module relative with ./server/modules'}
+		{id: 'auth', enable: true, path: './auth'}
 	]
 };
 

@@ -14,10 +14,10 @@ require('./config')(angular, config);
 
 // Defoult routes
 require('./router')(angular);
-/*
+
 // подключение модулей
 require('./modules')(angular);
-*/
+
 // подключаем шаблоны
 require('../html.js')(angular);
 

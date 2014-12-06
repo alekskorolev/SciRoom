@@ -1,4 +1,4 @@
 module.exports = function (angular) {
-//	require('./new-module')(angular);
+	require('./authBase')(angular);
 
 }

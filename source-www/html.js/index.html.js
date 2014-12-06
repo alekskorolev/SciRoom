@@ -1,4 +1,4 @@
 module.exports = function (angular) {angular.module('sciroom').run(['$templateCache', function($templateCache) {
     $templateCache.put('index.html',
-        "It`s a base index template!!");
+        "It`s a base index template!!\n<auth-base-snippet></auth-base-snippet>");
 }]);};
