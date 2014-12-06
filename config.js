@@ -33,7 +33,8 @@ var app = {
 	},
 	mode: 'development',
 	modules: [
-		{id: 'auth', enable: true, path: './auth'}
+		{id: 'auth', enable: true, path: './auth'},
+		{id: 'lobby', enable: true, path: './lobby'}
 	]
 };
 

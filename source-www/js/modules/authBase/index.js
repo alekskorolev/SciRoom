@@ -5,4 +5,5 @@ module.exports = function (angular) {
 	require('./ctrl')(angular);
 	require('./user-model')(angular);
 	require('./snippet')(angular);
+	require('./pfsnippet')(angular);
 };

@@ -1,5 +1,4 @@
 /*jslint node: true*/
-console.log('test');
 module.exports = function (angular) {
 	
 	angular.module('sciroom')
@@ -14,8 +13,13 @@ module.exports = function (angular) {
 							
 							$.extend($scope, {
 								user: userModel,
-								auth: {login: "", password: ""},
+								auth: {login: "fail@alesan.ru", password: "1qaz2wsx"},
+								pressEnter: function ($event) {
+									console.log($event.keyCode);
+									if ($event.keyCode==13) $scope.startLogin();
+								},
 								startLogin: function () {
+									
 									$scope.user.login($scope.auth, function (errors) {
 										console.log(errors);
 									});

@@ -8,11 +8,6 @@ module.exports = function (angular) {
             controller: 'indexCtrl',
             controllerAs: 'indexCtrl'
           })
-         .when('/lobby', {
-            templateUrl: 'lobby.html',
-            controller: 'indexCtrl',
-            controllerAs: 'indexCtrl'
-          })
  					.otherwise({
             templateUrl: 'errors/404.html',
             controller: 'errorCtrl',
