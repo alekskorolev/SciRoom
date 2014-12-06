@@ -1,19 +1,46 @@
+.homepage{background: url('../images/header.jpg') no-repeat 50% 50%;
+    ;}
 .lobby-wrap{
-    background: url('../images/header.jpg') no-repeat 50% 50%;
-    background-size: cover;
+    
     #header{ padding-top: 0px !important;
         .inner{
             padding-top: 0px !important;
         }
     }
 }
+.wrapper-lobby{
+    header{
+        #logo-wrap{
+            height: 65px;
+            width: 250px;
+            margin: 0px auto;
+            img{margin-left: 60px;}
+            hr{top:-1em;
+                border-top: solid 1px rgba(255, 255, 255, 0.2) ;
+border-bottom: solid 1px rgba(255, 255, 255, 0.2) ;}
+            hr:before, hr:after {
+                content: '';
+                position: absolute;
+                top: -8px;
+                display: block;
+                width: 1px;
+                height: 21px;
+                background: rgba(255, 255, 255, 0.2);
+            }
+        
+        }
+    }
+}
 .lobby{
+    vertical-align: top;
     width: 1200px;
     background: rgba(255,255,255,0.3);
-    height: 600px;
+    height: 515px;
     border-radius: 0.5em;
     border: solid 1px #E5E5E5;
     padding: 1em;
+    margin: 0px auto;
+    margin-top: 70px;
 }
 .publ, .own{
     display: inline-block;
@@ -24,14 +51,31 @@
      border-radius: 0.5em;
     border: solid 1px #E5E5E5;
     padding: 0.5em;
+    background: rgba(255, 255, 255, 0.7);
         .team{
-            height: 50px;
+            height: 65px;
             width: 100%;
+            border-radius: 0.5em;
+            background: #ffffff;
+            padding: 5px;
+            padding-left: 10px;
+            margin-bottom: 10px;
             .name{
             font-weight: bold;
+            font-weight: bold;
+            display: block;
+            line-height: 25px;
+            margin-left: 5px;
             }
             .disription{
             font-weight: light;
+                font-size: 13px;
             }
         }
+  
 }
+  .own{
+        height: 515px;
+        vertical-align: top
+            
+    }
