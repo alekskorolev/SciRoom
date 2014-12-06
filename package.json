@@ -1,0 +1,36 @@
+{
+  "name": "SciRoom",
+  "version": "0.0.1",
+  "description": "Scientific Quest Room Online",
+  "scripts": {},
+  "author": "SERPteam",
+  "dependencies": {
+    "express.io": "latest",
+    "angular-local-storage": "git+https://github.com/alekskorolev/angular-local-storage.git",
+    "angular": "git+https://github.com/bclinkinbeard/angular.git",
+    "angular-router-browserify": "latest",
+    "angular-cookies": "latest",
+    "jquery-browserify": "latest",
+    "log4js": "latest",
+    "angular-local-storage": "git+https://github.com/alekskorolev/angular-local-storage.git",
+    "mongoose": "latest",
+    "mongoose-redis-cache": "latest",
+    "events": "latest",
+    "angular.io": "git+https://github.com/alekskorolev/angular.io.git"
+  },
+  "devDependencies": {
+    "gulp-rename": "latest",
+    "gulp-concat": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-livereload": "latest",
+    "gulp-nodemon": "latest",
+    "gulp": "latest",
+    "gulp-jshint": "latest",
+    "gulp-uglify": "latest",
+    "gulp-less": "latest",
+    "browserify": "latest",
+    "gulp-browserify": "latest",
+    "gulp-angular-templates": "git+https://github.com/alekskorolev/gulp-angular-templates.git",
+    "gulp-webserver": "latest"
+  }
+}
