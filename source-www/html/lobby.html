@@ -44,7 +44,7 @@
                         </div>
                     </div>               
                     <div class='own'>
-                        <input type='text' class="team name" placeholder="enter team name">
+                        <input type='text' class="group name" placeholder="enter team name">
                         <textarea rows="9" cols="50" placeholder=" Some discription">
                            
                         </textarea>    
@@ -68,9 +68,11 @@
             offsetY: -20;
             animation: fade;
             });
-           /* $('.publ .team').hover(function({
-            $(this).find.closest('.jointeam').css("right:0");
-            })*/
+           $('.team').hover(function(event){
+              
+         $(this).find(".jointeam").toggleClass('visible');
+            })
+            
         });
     </script>
     

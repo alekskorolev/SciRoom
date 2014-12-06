@@ -3473,9 +3473,16 @@ select {
   right: -100px;
   top: 0;
   border-radius: 0.5em;
+  cursor: pointer;
+  padding-top: 15px;
+  font-weight: bold;
+  transition: 0.5s;
 }
 .publ .team .jointeam.full {
-  background: yellow;
+  background: gold;
+}
+.publ .team .jointeam.visible {
+  right: -10px !important;
 }
 .own {
   vertical-align: top;
@@ -3487,7 +3494,7 @@ select {
   height: 470px;
   position: relative;
 }
-.own .team {
+.own .name {
   display: block;
   height: 65px;
   border: 1px solid #ffffff;
@@ -3500,7 +3507,7 @@ select {
   margin-bottom: 10px;
   width: 100%;
 }
-.own .team:focus {
+.own .name:focus {
   outline: 0;
   outline-offset: 0;
 }
