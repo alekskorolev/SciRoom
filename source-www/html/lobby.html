@@ -1,0 +1,79 @@
+
+<script src="javascript/jquery.min.js"></script>
+
+<script src="javascript/jquery.tooltipster.js"></script>
+	
+<div calss='lobby-wrap'>
+<div id="header-lobby   ">
+						
+				<!-- Inner -->
+					<div class="wrapper-lobby">
+						<header>
+							<h1 id='logo-wrap'> <img src="images/logo.png"</h1>
+                                <hr />
+                                </header>
+                            </div>            
+                <div class="lobby">
+                    <div class="publ">
+                        <div class='team tooltip' title="4pm boys and girls only english please">
+                            <div class='jointeam'>Join!</div>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                            
+                        </div>
+                        <div class='team tooltip'>
+                            <div class='jointeam full'>Full</div>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                        </div>
+                        <div class='team'>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                        </div>
+                        <div class='team'>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                        </div>
+                        <div class='team'>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                        </div>
+                        <div class='team'>
+                        <span class='name'>My Team</span>
+                        <span class='disription'>4pm game lang: Enlish</span>    
+                        </div>
+                    </div>               
+                    <div class='own'>
+                        <input type='text' class="group name" placeholder="enter team name">
+                        <textarea rows="9" cols="50" placeholder=" Some discription">
+                           
+                        </textarea>    
+                        <a href='#' class="findteam">Find </a>
+                    </div>            
+                                
+                                
+                 </div>
+                                
+							
+							
+						
+						
+					</div>
+                </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster({
+            position:bottom;
+            offsetY: -20;
+            animation: fade;
+            });
+           $('.team').hover(function(event){
+              
+         $(this).find(".jointeam").toggleClass('visible');
+            })
+            
+        });
+    </script>
+    
+    
