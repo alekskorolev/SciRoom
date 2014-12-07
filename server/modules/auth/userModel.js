@@ -12,6 +12,7 @@ module.exports = function (app) {
 			isNew: Boolean,
 			value: {type: String}
 		},
+		name: String,
 		roles: [String]
 	});
 	// Crypt password if change

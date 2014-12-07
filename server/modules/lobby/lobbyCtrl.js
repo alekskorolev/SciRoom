@@ -25,7 +25,7 @@ module.exports = function (app) {
 		fetchTeams: function (req) {
 			Teams.find()
 				.exec(function (err, teams) {
-					console.log(err, teams);
+					log.debug(err, teams);
 					req.io.respond({success: true, msg: 'team is created', teams: teams});
 				})
 		},
@@ -33,6 +33,10 @@ module.exports = function (app) {
 			Teams.findById(req.data.id)
 				.exec(function (err, team) {
 					team.joinMember(req.session.user._id, function (err) {
+						if (team.members.length==4) {
+							log.debug('start');
+							app.io.broadcast('lobby:teamcomplite:'+team._id, {game: 'its new game'});
+						}
 						req.io.respond({success: !err, team: team});
 					});
 				});

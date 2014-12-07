@@ -15,13 +15,25 @@ module.exports = function (angular) {
 							team.attr = team.getAttr();
 							console.log(team.attr.created.getDay());
 							$scope.teamlist.push(team);
+							$scope.newteam.name = "";
+							$scope.newteam.description = "";
+							$scope.teamlist.inTeam = true;
+							$scope.teamlist.invitedTeam = team;
 							//$scope.teamlist = $filter('orderBy')($scope.teamlist, expression, reverse)
 							console.log('created', data);
 						})
+					},
+					leaveTeam: function () {
+						$scope.teamlist.invitedTeam.leave()
+							.then(function (data) {
+								
+							});
 					}
 				});
 				$scope.$on('$viewContentLoaded',
 					function (event) {
+						$scope.teamlist = [];
+						$scope.teamlist.inTeam = false;
 						teamModel.loadTeamList()
 							.then(function (teams) {
 								console.log(teams);

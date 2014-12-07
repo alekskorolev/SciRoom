@@ -4,7 +4,7 @@ module.exports = function (angular) {
 		.factory('userModel', ['$rootScope', 'socketIO', '$location', function ($rootScope, io, $location) {
 			var UserModel = function () {
 				var priv = {
-					user: {role: 'guest', profile: {name: 'Guest'}},
+					user: {role: 'guest', profile: {name: 'Guest', login: ""}},
 					mask: {
 						email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 					},
@@ -21,7 +21,7 @@ module.exports = function (angular) {
 							// after auth
 							console.log(data);
 							if (data.success) {
-								$.extend(true, priv.user, {role: "user", profile: { name: "Вася пупкин"}});
+								$.extend(true, priv.user, {role: "user", profile: { name: data.user.name, login: data.user.login, id: data.user._id}});
 							} else {
 								// TODO error message
 							}
@@ -35,7 +35,7 @@ module.exports = function (angular) {
 							// after auth
 							console.log(data);
 							if (data.success) {
-								$.extend(true, priv.user, {role: "guest", profile: { name: "Guest"}});
+								$.extend(true, priv.user, {role: "guest", profile: { name: "Guest", login: "", id: false}});
 							} else {
 								// TODO error message
 							}
@@ -65,9 +65,9 @@ module.exports = function (angular) {
 							// after auth
 							console.log(data);
 							if (data.auth) {
-								$.extend(true, priv.user, {role: "user", profile: { login: data.user.login}});
+								$.extend(true, priv.user, {role: "user", profile: {  name: data.user.name, login: data.user.login, id: data.user._id}});
 								
-								$location.path('/lobby');
+								if ($location.$$path == "/") $location.path('/lobby');
 								
 								console.log($location);
 							} else {

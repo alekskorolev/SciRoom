@@ -12,7 +12,7 @@
 		<div class="lobby">
 			<div class="publ">
 				<div class='team tooltip' ng-repeat="team in teamlist | orderBy:'attr.created':true | limitTo: teamoffset - teamlist.length | limitTo: 6 " ng-title="team.attr.description">
-					<div class='jointeam' ng-click="team.join()">Join!</div>
+					<div class='jointeam' ng-click="team.join()" ng-show="!teamlist.inTeam">Join!</div>
 					<span class='name' ng-bind="team.attr.name">My Team</span>
 					<span class='disription' ng-bind="team.attr.description">4pm game lang: Enlish</span> 
 
@@ -39,12 +39,19 @@
 					<span class='disription'>4pm game lang: Enlish</span> 
 				</div>-->
 			</div>
-			<div class='own'>
+			<div class='own'  ng-show="!teamlist.inTeam">
 				<input type='text' class="team name" placeholder="enter team name" ng-model="newteam.name">
 				<textarea rows="9" cols="50" placeholder=" Some discription" ng-model="newteam.description">
 
 				</textarea>
 				<a class="findteam" ng-click="createTeam()">Create team for game.</a>
+			</div>
+			<div class='own invited'  ng-show="teamlist.inTeam">
+				<input type='text' class="team name" placeholder="enter team name" disabled ng-value="teamlist.invitedTeam.attr.name">
+				<textarea rows="9" cols="50" placeholder=" Some discription" disabled ng-bind="teamlist.invitedTeam.attr.description">
+
+				</textarea>
+				<a class="findteam" ng-click="leaveTeam()">Leave from team</a><a class="findteam" ng-click="teamlist.invitedTeam.startGame()">Start</a>
 			</div>
 
 
@@ -56,7 +63,7 @@
 
 	</div>
 </div>
-<script>
+<!--<script>
 	$(document).ready(function () {
 		$('.tooltip').tooltipster({
 			position: 'bottom',
@@ -68,6 +75,6 @@
 		});
 
 	});
-</script>
+</script>-->
 
 

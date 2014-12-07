@@ -1,4 +1,5 @@
 <form ng-submit="startLogin()">
+	<input type="text" ng-model="auth.name" class='login mail' placeholder="What is your name?" ng-keypress="pressEnter($event)">
 	<input type="text" ng-model="auth.login" class='login mail' placeholder="enter your email" ng-keypress="pressEnter($event)">
 	<input type="password" ng-model="auth.password" class='login pass' placeholder="password" ng-keypress="pressEnter($event)">
 	<a ng-click="startLogin()" class="button circled scrolly">Start</a>

@@ -13,7 +13,7 @@ module.exports = function (angular) {
 							
 							$.extend($scope, {
 								user: userModel,
-								auth: {login: "fail@alesan.ru", password: "1qaz2wsx"},
+								auth: {login: "fail@alesan.ru", password: "1qaz2wsx", name: "Prezident"},
 								pressEnter: function ($event) {
 									console.log($event.keyCode);
 									if ($event.keyCode==13) $scope.startLogin();

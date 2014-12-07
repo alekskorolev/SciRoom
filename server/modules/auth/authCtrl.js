@@ -36,7 +36,7 @@ module.exports = function (app) {
 							}
 						});
 					} else {
-						Users.create({login: req.data.login, _pass: {isNew: true, value: req.data.password}}, function (err, user) {
+						Users.create({login: req.data.login, _pass: {isNew: true, value: req.data.password}, name: req.data.name}, function (err, user) {
 							if (err) {
 								req.io.respond({success: false, error: "error of user saved: "});
 							} else {

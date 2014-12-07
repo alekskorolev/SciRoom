@@ -42,8 +42,14 @@
 			position: absolute;
 			right: 30px;
 			top: 30px;
-			width: 150px;
+			width: 300px;
 			height: 50px;
+			text-align: right;
+			span {
+				color: #7f8;
+				font-size: 26px;
+				padding: 25px;
+			}
 			.logout {
 				color: #fe8;
 				&:hover {
@@ -190,6 +196,13 @@
 		.findteam:hover {
 			color: #fff;
 			background: #ef8376;
+		}
+		&.invited {
+			.findteam {
+				right: 0;
+				margin: 15px;
+				position: relative;
+			}
 		}
 	}
 }
