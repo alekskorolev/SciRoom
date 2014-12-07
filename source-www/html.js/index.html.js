@@ -1,4 +1,0 @@
-module.exports = function (angular) {angular.module('sciroom').run(['$templateCache', function($templateCache) {
-    $templateCache.put('index.html',
-        "<div id=\"header\">\n\n\t<!-- Inner -->\n\t<div class=\"inner\">\n\t\t<header>\n\t\t\t<h1 id='logo-wrap'><a href=\"/\" id=\"logo\"><img src=\"images/logo.png\"></a></h1>\n\t\t\t<hr />\n\n\n\n\t\t</header>\n\t\t<footer>\n\t\t\t<!-- <form >\n                                <input type=\"text\" class='login mail' placeholder=\"enter your email\">\n                               <input type=\"password\" class='login pass' placeholder=\"password\">\n                                \n                               <input type=\"submit\" class=\"button circled scrolly\" value=\"Start\">\n                                </form>-->\n\t\t\t<auth-base-snippet></auth-base-snippet>\n\n\t\t</footer>\n\t</div>\n</div>\n\n\n\n");
-}]);};
