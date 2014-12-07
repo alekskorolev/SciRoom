@@ -23,18 +23,10 @@ module.exports = function (angular) {
 				$scope.$on('$viewContentLoaded',
 					function (event) {
 						teamModel.loadTeamList()
-							.then(function(teams) {
+							.then(function (teams) {
 								console.log(teams);
-								$.extend($scope.teamlist,teams);
+								$.extend($scope.teamlist, teams);
 							});
-						$('.tooltip').tooltipster({
-							position: 'bottom',
-							offsetY: -20,
-							animation: 'fade',
-						});
-/*						$('.publ .team').hover(function () {
-							$(this).find.closest('.jointeam').css("right:0");
-						});*/
 					});
-				}]);
+			}]);
 }

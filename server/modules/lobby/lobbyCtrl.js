@@ -28,8 +28,17 @@ module.exports = function (app) {
 					console.log(err, teams);
 					req.io.respond({success: true, msg: 'team is created', teams: teams});
 				})
+		},
+		joinTeam: function (req) {
+			Teams.findById(req.data.id)
+				.exec(function (err, team) {
+					team.joinMember(req.session.user._id, function (err) {
+						req.io.respond({success: !err, team: team});
+					});
+				});
 		}
 	}
 	app.io.route('lobby:newteam', auth.newTeam);
 	app.io.route('lobby:fetchteams', auth.fetchTeams);
+	app.io.route('lobby:join', auth.joinTeam);
 }

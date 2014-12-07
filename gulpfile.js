@@ -68,7 +68,7 @@ gulp.task('serve', function (cb) {
 // Действия по умолчанию
 gulp.task('default', function(){
 	
-  gulp.run('html', 'scripts', 'less', 'serve', 'www');
+  gulp.run('html', 'scripts', 'less', 'serve');//, 'www');
 
   gulp.watch([dst.html+'**/*.js',dst.html+'*.js',src.js+'*.js', src.js + "**/*.js"], function(event){
     gulp.run('scripts');

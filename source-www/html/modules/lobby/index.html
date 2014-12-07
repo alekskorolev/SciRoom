@@ -5,19 +5,19 @@
 		<div class="wrapper-lobby">
 			<header>
 				<h1 id='logo-wrap'> <img src="images/logo.png"></h1>
-					<profile-base-snippet></profile-base-snippet>
+				<profile-base-snippet></profile-base-snippet>
 				<hr />
 			</header>
 		</div>
 		<div class="lobby">
 			<div class="publ">
 				<div class='team tooltip' ng-repeat="team in teamlist | orderBy:'attr.created':true | limitTo: teamoffset - teamlist.length | limitTo: 6 " ng-title="team.attr.description">
-					<div class='jointeam'>Join!</div>
+					<div class='jointeam' ng-click="team.join()">Join!</div>
 					<span class='name' ng-bind="team.attr.name">My Team</span>
 					<span class='disription' ng-bind="team.attr.description">4pm game lang: Enlish</span> 
 
 				</div>
-<!--				<div class='team tooltip'>
+				<!--				<div class='team tooltip'>
 					<div class='jointeam full'>Full</div>
 					<span class='name'>My Team</span>
 					<span class='disription'>4pm game lang: Enlish</span> 
@@ -56,8 +56,18 @@
 
 	</div>
 </div>
-
 <script>
+	$(document).ready(function () {
+		$('.tooltip').tooltipster({
+			position: 'bottom',
+			offsetY: -20,
+			animation: 'fade',
+		});
+		$('.publ .team').hover(function () {
+			$(this).find.closest('.jointeam').css("right:0");
+		});
 
+	});
 </script>
+
 

@@ -13,6 +13,7 @@ module.exports = function (app) {
 	});
 	teamSchema.methods.joinMember = function(id, cb) {
 		var inTeam = false;
+		if (this.members.length>3 || this.owner==id) return cb({msg: 'Always invited'});
 		this.members.forEach(function (member) {
 			if (member==id) inTeam = true;	
 		});

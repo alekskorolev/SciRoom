@@ -41,7 +41,20 @@ module.exports = function (angular) {
 							.then(function(data) {
 								//save result
 							});
-					}
+					},
+					join: inList?function () {
+						console.log('loin');
+						var deffered = $q.defer();
+						io.send('lobby:join', {id: this.getAttr('_id')}, function (data) {
+							console.log(data);
+							if (data.success) {
+								deffered.resolve(data);
+							} else {
+								deffered.reject(data.error);
+							}
+						});
+						return deffered.promise;
+					}:undefined
 				};
 			}
 			var collection = [];
