@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 
-module.exports = function ($, window, document) {
+(function ($, window, document) {
 
 	var pluginName = "tooltipster",
 		defaults = {
@@ -1324,4 +1324,4 @@ module.exports = function ($, window, document) {
 		}
 		return false;
 	}
-}
+})($, window, document);

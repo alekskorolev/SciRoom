@@ -7,12 +7,38 @@ module.exports = function (app) {
 	var teamSchema = new orm.Schema({
 		name: String, 
 		description: String,
-		members: [orm.Types.ObjectId]
+		owner: String,
+		members: [String],
+		created: { type: Date, required: true, default: Date.now }
 	});
-	teamSchema.methods.addOwner = function(id, cb) {
-		this.members[0] = orm.Types.ObjectId(id);
-		cb(this);
+	teamSchema.methods.joinMember = function(id, cb) {
+		var inTeam = false;
+		this.members.forEach(function (member) {
+			if (member==id) inTeam = true;	
+		});
+		if (!inTeam) this.members.push(id);
+		this.save(function (err) {
+			cb(err, this);
+		});
 	};
+	teamSchema.methods.leaveMember = function(id, cb) {
+		// add member to team;
+		this.save(function (err) {
+			cb(err, this);
+		});
+	};
+/*	teamSchema.pre('save', function (next) {
+		var that = this;
+		if (this.listmembers && this.listmembers.length>0) {
+			var memb = [];
+			this.members.forEach(function (member) {
+				memb.push(orm.Types.ObjectId(member));
+			});
+			this.members = memb;
+		}	
+		log.debug(this);
+		next();
+	});*/
 	teamSchema.methods.fetchMembers = function (cb) {
 		log.debug(this);
 		Users

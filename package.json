@@ -19,18 +19,19 @@
     "mongoose-redis-cache": "latest"
   },
   "devDependencies": {
-    "gulp-rename": "latest",
-    "gulp-concat": "latest",
-    "gulp-minify-css": "latest",
-    "gulp-livereload": "latest",
-    "gulp-nodemon": "latest",
-    "gulp": "latest",
-    "gulp-jshint": "latest",
-    "gulp-uglify": "latest",
-    "gulp-less": "latest",
     "browserify": "latest",
-    "gulp-browserify": "latest",
+    "gulp": "latest",
     "gulp-angular-templates": "git+https://github.com/alekskorolev/gulp-angular-templates.git",
+    "gulp-browserify": "latest",
+    "gulp-concat": "latest",
+    "gulp-jshint": "latest",
+    "gulp-less": "latest",
+    "gulp-livereload": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-nodemon": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "^1.0.2",
     "gulp-webserver": "latest"
   }
 }

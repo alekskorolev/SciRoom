@@ -1,24 +1,35 @@
 module.exports = function (app) {
 	var log = app.get('logger')('modules/lobby');
 	var Teams = app.get('model:team');
+	var orm = app.get('orm');
 	var auth = {
 		newTeam: function (req) {
-			Teams.create({name: req.data.name, description: req.data.description}, function (err, team) {
+			Teams.create({name: req.data.name, description: req.data.description, owner: req.session.user._id}, function (err, team) {
+				log.debug(err, team);
 				if (err) {
 					req.io.respond({success: false, error: "error of team saved: "});
 				} else {
-					team.addOwner(req.session.user._id, function () {
+					if (team) req.io.respond({success: true, msg: 'team is created', team: team});
+/*					team.addOwner(req.session.user._id, function () {
 						team.save(function (err, team) {
+							log.debug(err, team);
 							team.fetchMembers(function(err, members) {
 								log.debug(members);
 								if (team) req.io.respond({success: true, msg: 'team is created', team: team, members: members});									
 							})
 						});
-					});
+					});*/
 				}
 			})
-			log.debug(req.data);
+		},
+		fetchTeams: function (req) {
+			Teams.find()
+				.exec(function (err, teams) {
+					console.log(err, teams);
+					req.io.respond({success: true, msg: 'team is created', teams: teams});
+				})
 		}
 	}
 	app.io.route('lobby:newteam', auth.newTeam);
+	app.io.route('lobby:fetchteams', auth.fetchTeams);
 }

@@ -11,13 +11,13 @@
 		</div>
 		<div class="lobby">
 			<div class="publ">
-				<div class='team tooltip' title="4pm boys and girls only english please">
+				<div class='team tooltip' ng-repeat="team in teamlist | orderBy:'attr.created':true | limitTo: teamoffset - teamlist.length | limitTo: 6 " ng-title="team.attr.description">
 					<div class='jointeam'>Join!</div>
-					<span class='name'>My Team</span>
-					<span class='disription'>4pm game lang: Enlish</span> 
+					<span class='name' ng-bind="team.attr.name">My Team</span>
+					<span class='disription' ng-bind="team.attr.description">4pm game lang: Enlish</span> 
 
 				</div>
-				<div class='team tooltip'>
+<!--				<div class='team tooltip'>
 					<div class='jointeam full'>Full</div>
 					<span class='name'>My Team</span>
 					<span class='disription'>4pm game lang: Enlish</span> 
@@ -37,7 +37,7 @@
 				<div class='team'>
 					<span class='name'>My Team</span>
 					<span class='disription'>4pm game lang: Enlish</span> 
-				</div>
+				</div>-->
 			</div>
 			<div class='own'>
 				<input type='text' class="team name" placeholder="enter team name" ng-model="newteam.name">
@@ -58,15 +58,6 @@
 </div>
 
 <script>
-	/*        $(document).ready(function() {
-            $('.tooltip').tooltipster({
-            position:bottom;
-            offsetY: -20;
-            animation: fade;
-            });
-            $('.publ .team').hover(function({
-            $(this).find.closest('.jointeam').css("right:0");
-            })
-        });*/
+
 </script>
 
