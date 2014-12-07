@@ -16,7 +16,8 @@
     "jquery-browserify": "latest",
     "log4js": "latest",
     "mongoose": "latest",
-    "mongoose-redis-cache": "latest"
+    "mongoose-redis-cache": "latest",
+    "phaser": "^2.2.1"
   },
   "devDependencies": {
     "browserify": "latest",

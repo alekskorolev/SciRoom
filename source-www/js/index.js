@@ -8,7 +8,6 @@ require('angular-router-browserify')(angular);
 require('angular-local-storage')(angular);
 require('angular.io')(angular);
 
-
 require('./lib/jquery.dropotron.min.js')($);
 require('./lib/jquery.scrolly.min.js')($);
 require('./lib/jquery.onvisible.min.js')($);

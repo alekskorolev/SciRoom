@@ -1,7 +1,8 @@
 /*jslint node: true*/
 module.exports = function (angular) {
 	angular.module('sciroom')
-		.factory('userModel', ['$rootScope', 'socketIO', '$location', function ($rootScope, io, $location) {
+		.factory('userModel', ['$rootScope', 'socketIO', '$location', '$q',
+													 function ($rootScope, io, $location, $q) {
 			var UserModel = function () {
 				var priv = {
 					user: {role: 'guest', profile: {name: 'Guest', login: ""}},
@@ -60,6 +61,8 @@ module.exports = function (angular) {
 						return errors.length>0?errors:false;
 					},
 					checkAuth: function () {
+						var that = this;
+						var deffered = $q.defer();
 						var cb = cb || false;
 						io.send('auth:check', {}, function (data) {
 							// after auth
@@ -70,11 +73,14 @@ module.exports = function (angular) {
 								if ($location.$$path == "/") $location.path('/lobby');
 								
 								console.log($location);
+								deffered.resolve(this);
 							} else {
 								$location.path('/');
+								deffered.reject();
 							}
 							if (angular.isFunction(cb)) cb(!data.success);
 						});
+						return deffered.promise;
 					}
 				};
 				return {
@@ -92,7 +98,7 @@ module.exports = function (angular) {
 						priv.logout(data, cb);
 					},
 					checkauth: function () {
-						priv.checkAuth();
+						return priv.checkAuth();
 					}
 				};
 			};

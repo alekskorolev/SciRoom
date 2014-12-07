@@ -60,6 +60,12 @@ module.exports = function (app) {
         }
 	    });
 	};
+	userSchema.methods.getInvitedTeam = function (cb) {
+		log.debug(this);
+		app.get('model:team')
+			.findOne({}).or([{owner: this._id}, {members: this._id}])
+			.exec(cb);
+	}
 	// Create User model
 	model.Users = orm.model('Users', userSchema);
 	// Check new user on exist

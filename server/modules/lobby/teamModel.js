@@ -47,7 +47,40 @@ module.exports = function (app) {
 			.where('_id').in(this.members)
 			.exec(cb);
 	}
-	Teams = orm.model('Teams', teamSchema);
+	teamSchema.methods.getGame = function (cb) {
+		log.debug(this);
+		var members = [this.owner].push(this.members);
+		app.get('model:game').create({
+			name: this.name, 
+			description: this.description,
+			owner: this.owner,
+			members: [this.owner, this.members[0],this.members[1],this.members[2],this.members[3]],
+			team: this._id}, function (err, game) {
+				if(err && err.existing) {
+					game = err.existing;
+				} else if (err) {
+					return cb(false);
+				} 
+				game.fetchMembers(function(err, members) {
+					log.debug(err, game);
+					cb({game: game, 
+							users: members,
+						 	gamespace: {
+								name: 'chemicalplants',
+								description: 'Abandoned Chemical Plant',
+								locations: [
+									{img: 'assets/chemicalplants/firstloca.jpg', 
+									 movecoords: [[0,100],[20,30],[80,30],[100,0]], 
+									 quests: [{id: 0, text: "test quest", zones: [[20,30],[20,20],[30,20],[30,30]]}
+													 ]
+									}
+								]
+							}
+						 });
+				})
+			});
+	}
+	var Teams = orm.model('Teams', teamSchema);
 
 	app.set('model:team', Teams);
 	app.set('schema:team', teamSchema);
